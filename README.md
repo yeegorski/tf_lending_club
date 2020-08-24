@@ -68,3 +68,20 @@ Six variables have missing data points. I started with the ones that had the mos
     * based on such averages, the missing data in *mort_acc* was imputed
 * *revol_util* (revolving line utilization rate) and *pub_rec_bankruptcies* (number of public record bankruptcies): 0.07% and 0.14% missng respectively
     * the missing data for those features constitute a very small percent of the whole dataset length, so I decided to drop the rows with the null values 
+    
+### Categorical data
+There are eleven categorical variables (excluding the target) in the dataset. Each of them was analyzed separately, and transformations were made according to their nature.
+* *term*: he number of payments on the loan. Values are in months and can be either 36 or 60.
+    * this is essentially a binary variable. I decided to keep the numbers to reflect the difference in period lengths.
+* *grade* and *sub_grade*: assigned by the LendingClub
+    * *grade* is duplicating the information already available in the *sub_grade* variable, so it was dropped
+    * *sub_grade* was converted to dummy variables
+* *verification_status*, *purpose*, *initial_list_status*, *application_type* were all appropriate for one-hot encoding as well.
+* *home_ownership*: the home ownership status provided by the borrower during registration.
+    * I converted very rare instances into one category, and applied one-hot encoding as well
+* *address*: provided by the borrower in the application
+    * I extracted zip-codes from the addresses, and since there were only 10 unique ones, I converted the feature into dummy variables
+* *issue_d*: date of loan issue. Since the goal of the model is to predict, if the borrower will pay or default on the loan, we cannot know the issue date. Therefore, there is no point of keeping such feature for the model.
+* *earliest_cr_feature*: the month the borrower's earliest reported credit line was opened.
+    * the data are provided in mmm-yyyy format, I decided to keep only the year for the model
+
