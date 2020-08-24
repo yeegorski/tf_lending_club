@@ -21,6 +21,14 @@ Based on the historical data provided in the dataset, a model is to be built tha
 Due to the nature of the problem, the dataset in regards to the labels is quite imbalanced - most of the loans get paid. This pattern can be seen in the visualizations below, along with other insights (highly correlated features and distributions of loan statuses per grade):
 
 ![alt text](https://github.com/yeegorski/tf_lending_club/blob/master/loan_status_countplot.png "Loan status - Imbalanced target")
+
+Loan status - Imbalanced target
+
 ![alt text](https://github.com/yeegorski/tf_lending_club/blob/master/corr_matrix.png "Numeric variable correlation - High correlation between loan_amnt and installment")
+
+Numeric variable correlation - High correlation between loan_amnt and installment
+
 ![alt text](https://github.com/yeegorski/tf_lending_club/blob/master/sub_grade_distribution.png "Distribution of loans per subgrade - Paid ones peak at B3, while defaulted - at C4")
+
+Distribution of loans per subgrade - Paid ones peak at B3, while defaulted - at C4
 
