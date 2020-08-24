@@ -15,5 +15,12 @@ The project is a part of the Jose Portilla's Data Science Bootcamp [course](http
 **Data set:** https://www.kaggle.com/wordsforthewise/lending-club.
 
 ## The Goal
-Based on the historical data provided in the dataset, a model is to be built that will predict if the borrower will fully pay the loan or will default on it (so the loan will be charged-off). The model will allow to predict if a new potential customer is likely to pay back the loan. 
+Based on the historical data provided in the dataset, a model is to be built that will predict if the borrower will fully pay the loan or will default on it (so the loan will be charged-off). The model will allow to predict if a new potential customer is likely to pay back the loan.
+
+## EDA
+Due to the nature of the problem, the dataset in regards to the labels is quite imbalanced - most of the loans get paid. This pattern can be seen in the visualizations below, along with other insights (highly correlated features and distributions of loan statuses per grade):
+
+![alt text](https://github.com/yeegorski/tf_lending_club/blob/master/loan_status_countplot.png "Loan status - Imbalanced target")
+![alt text](https://github.com/yeegorski/tf_lending_club/blob/master/corr_matrix.png "Numeric variable correlation - High correlation between loan_amnt and installment")
+![alt text](https://github.com/yeegorski/tf_lending_club/blob/master/sub_grade_distribution.png "Distribution of loans per subgrade - Paid ones peak at B3, while defaulted - at C4")
 
