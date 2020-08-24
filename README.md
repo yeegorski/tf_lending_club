@@ -32,3 +32,10 @@ Numeric variable correlation - High correlation between loan_amnt and installmen
 
 Distribution of loans per subgrade - Paid ones peak at B3, while defaulted - at C4
 
+## Data Preprocessing
+
+### Missing data
+Six variables have missing data points. I started with the ones that had the most null values.
+* emp_title: the job title of the borrower
+    ** since there were around 173K unique titles (around 50% of the whole dataset), I decided to drop the variable.
+
