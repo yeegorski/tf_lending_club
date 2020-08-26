@@ -97,7 +97,7 @@ There are eleven categorical variables (excluding the target) in the dataset. Ea
  
  ### Creating the model
  * Model type: sequential
- * Number of hidden layers: 2 with 78 units in each. The number was defined after the model tuning.I added three dropout layers to avoid overfitting. I have also tried to gradually decrease the number of neurons in each layer, but that did not prove effective.
+ * Number of hidden layers: 2 with 78 units in each. The number was defined after the model tuning. I added three dropout layers to avoid overfitting. I have also tried to gradually decrease the number of neurons in each layer, but that did not prove effective.
  * Activation function: Rectified Linear Units (ReLU) (hidden layers), sigmoid (outer layer) - as this is a binary classification problem.
  * Loss function: binary cross entropy
  * Optimizer: adam
