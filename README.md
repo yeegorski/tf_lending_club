@@ -113,7 +113,7 @@ There are eleven categorical variables (excluding the target) in the dataset. Ea
  * Recall: 49% (lowest of the two classes)
  * F1-score: 61% (lowest of the two classes) - suffers mostly due to the low recall, which in turn is the result of the imbalanced dataset - there are much more "paid" entries than the "charged-off" ones
  
- * I also took a random entry from the dataset, and I checked it against the model. The model prediction was correct.
+ * I also took a random entry from the dataset and checked it against the model. The model prediction was correct.
 
  
 
