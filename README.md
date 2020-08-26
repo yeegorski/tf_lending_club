@@ -15,10 +15,10 @@ The project is a part of the Jose Portilla's Data Science Bootcamp [course](http
 **Data set:** https://www.kaggle.com/wordsforthewise/lending-club.
 
 ## The Goal
-Based on the historical data provided in the dataset, a model is to be built that will predict if the borrower will fully pay the loan or will default on it (so the loan will be charged-off). The model will allow to predict if a new potential customer is likely to pay back the loan.
+Based on the historical data provided in the dataset, a deep learning model is to be built that will predict if a new potential customer is likely to pay back the loan.
 
 ## EDA
-Due to the nature of the problem, the dataset in regards to the labels is quite imbalanced - most of the loans get paid. This pattern can be seen in the visualizations below, along with other insights (highly correlated features and distributions of loan statuses per grade):
+Due to the nature of the problem, the dataset is quite imbalanced in regards to the labels - most of the loans get paid. This pattern can be seen in the visualizations below, along with other insights (highly correlated features and distributions of loan statuses per grade):
 
 ![alt text](https://github.com/yeegorski/tf_lending_club/blob/master/loan_status_countplot.png "Loan status - Imbalanced target")
 
@@ -63,19 +63,19 @@ Six variables have missing data points. I started with the ones that had the mos
     * the variable *purpose* provided essentially same information in a more systematic fashion. *title* has been dropped
 * *mort_acc*: number of mortgage accounts (9.54% missing)
     * the variable has the highest correlation with the target, so it was worth to keep it, and impute the missing data
-    * for imputation I used another feature - *total_acc* (number of total accounts) - which was somewhat correlated to *mort_acc*
-    * the data were grouped by *total_acc*, and an average of *mort_acc* was calcualted for each group
-    * based on such averages, the missing data in *mort_acc* was imputed
-* *revol_util* (revolving line utilization rate) and *pub_rec_bankruptcies* (number of public record bankruptcies): 0.07% and 0.14% missng respectively
+    * for imputation I used another feature - *total_acc* (number of total accounts) - which was somewhat correlated to *mort_acc* (38.11%)
+    * the data were grouped by *total_acc*, and an average of *mort_acc* has been calcualted for each group
+    * based on such averages, the missing data in *mort_acc* has been imputed
+* *revol_util* (revolving line utilization rate) and *pub_rec_bankruptcies* (number of public record bankruptcies): 0.07% and 0.14% missing respectively
     * the missing data for those features constitute a very small percent of the whole dataset length, so I decided to drop the rows with the null values 
     
 ### Categorical data
-There are eleven categorical variables (excluding the target) in the dataset. Each of them was analyzed separately, and transformations were made according to their nature.
+There are eleven categorical variables (excluding the target) in the dataset. Each of them has been analyzed separately, and transformations have been made according to their nature.
 * *term*: he number of payments on the loan. Values are in months and can be either 36 or 60.
     * this is essentially a binary variable. I decided to keep the numbers to reflect the difference in period lengths.
 * *grade* and *sub_grade*: assigned by the LendingClub
-    * *grade* is duplicating the information already available in the *sub_grade* variable, so it was dropped
-    * *sub_grade* was converted to dummy variables
+    * *grade* is duplicating the information already available in the *sub_grade* variable, so it has been dropped
+    * *sub_grade* has been converted to dummy variables
 * *verification_status*, *purpose*, *initial_list_status*, *application_type* were all appropriate for one-hot encoding as well.
 * *home_ownership*: the home ownership status provided by the borrower during registration.
     * I converted very rare instances into one category, and applied one-hot encoding as well
@@ -103,7 +103,7 @@ There are eleven categorical variables (excluding the target) in the dataset. Ea
  * Optimizer: adam
  * Epochs: 25
  * Batch size: 128
- * Losses: the validation loss starts to decrease after the 9th epoch, overfitting begins
+ * Losses: the validation loss starts to increase after the 9th epoch, overfitting begins
  
  ![alt text](https://github.com/yeegorski/tf_lending_club/blob/master/model%20losses.png "Model losses")
  
