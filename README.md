@@ -84,4 +84,36 @@ There are eleven categorical variables (excluding the target) in the dataset. Ea
 * *issue_d*: date of loan issue. Since the goal of the model is to predict, if the borrower will pay or default on the loan, we cannot know the issue date. Therefore, there is no point of keeping such feature for the model.
 * *earliest_cr_feature*: the month the borrower's earliest reported credit line was opened.
     * the data are provided in mmm-yyyy format, I decided to keep only the year for the model
+    
+ ### Preprocessing
+ * I took a fraction (10%) of the dataset as the machine I was running the notebook on was not powerful enough to handle all the data in the model.
+ * train-test split: as the dataset is relatively big (39522 rows) even after fractioning, I decided to make a 80/20 split.
+ 
+ ### Normalizing the data
+ * To ensure correctness of the results in the deep learning model, I normalized the data using MinMaxScaler from sklearn.
+ * The test set has been normalized based on the training set to prevent the leakage of data.
+ 
+ ## Creating and Evaluating the Model
+ 
+ ### Creating the model
+ * Model type: sequential
+ * Number of hidden layers: 2 with 78 units in each. The number was defined after the model tuning.I added three dropout layers to avoid overfitting. I have also tried to gradually decrease the number of neurons in each layer, but that did not prove effective.
+ * Activation function: Rectified Linear Units (ReLU) (hidden layers), sigmoid (outer layer) - as this is a binary classification problem.
+ * Loss function: binary cross entropy
+ * Optimizer: adam
+ * Epochs: 25
+ * Batch size: 128
+ * Losses: the validation loss starts to decrease after the 9th epoch, overfitting begins
+ 
+ ![alt text](https://github.com/yeegorski/tf_lending_club/blob/master/model%20losses.png "Model losses")
+ 
+ ### Evaluating the model
+ * Accuracy: 87.6% - the result is better than a "default" score of assigning everything as "paid", which is 80.12%.
+ * Precision: 82% (lowest of the two classes)
+ * Recall: 49% (lowest of the two classes)
+ * F1-score: 61% (lowest of the two classes) - suffers mostly due to the low recall, which in turn is the result of the imbalanced dataset - there are much more "paid" entries than the "charged-off" ones
+ 
+ * I also took a random entry from the dataset, and I checked it against the model. The model prediction was correct.
+
+ 
 
